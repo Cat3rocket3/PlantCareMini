@@ -17,11 +17,18 @@ namespace PlantCareMini.Web
             // Database connection
             builder.Services.AddDbContext<ApplicationDbContext>(
                 options => options.UseSqlServer(
-                    @"Server=(localdb)\MSSQLLocalDB;Database=PlantCareMiniDb;Trusted_Connection=True;TrustServerCertificate=True;"));
+                    @"Server=localhost,1433;Database=PlantCareMiniDb;User Id=sa;Password=144g144gG@;TrustServerCertificate=True;"));
+
+            //Add-Migration init -Project PlantCareMini.Data -StartupProject PlantCareMini.Web
+            //Update-Database -Project PlantCareMini.Data -StartupProject PlantCareMini.Web
+
+
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+
+
+          
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
