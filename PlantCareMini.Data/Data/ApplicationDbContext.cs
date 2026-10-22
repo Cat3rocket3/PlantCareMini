@@ -15,7 +15,7 @@ namespace PlantCareMini.Data.Data
             : base(options)
         {
         }
-
+        //plamen
         public DbSet<Plant> Plants { get; set; }
     }
 }
