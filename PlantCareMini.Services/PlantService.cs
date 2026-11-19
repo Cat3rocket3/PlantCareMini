@@ -57,5 +57,15 @@ namespace PlantCareMini.Services
             _db.Plants.Add(plant);
             await _db.SaveChangesAsync();
         }
+
+        public async Task Edit(Plant plant, string name, int plantTypeId, int growingLocationId, int wateringIntervalDays, string description)
+        {
+            plant.Name = name;
+            plant.PlantTypeId = plantTypeId;
+            plant.GrowingLocationId = growingLocationId;
+            plant.WateringIntervalDays = wateringIntervalDays;
+            plant.Description = description;
+            await _db.SaveChangesAsync();
+        }
     }
 }

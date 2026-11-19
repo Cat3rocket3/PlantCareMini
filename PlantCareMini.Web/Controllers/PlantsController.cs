@@ -67,5 +67,53 @@ namespace PlantCareMini.Web.Controllers
                 Description = description
             });
         }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var plant = await _plantService.GetById(id);
+            if (plant == null)
+            {
+                return NotFound();
+            }
+            ViewBag.PlantTypes = await _plantService.GetPlantTypes();
+            ViewBag.GrowingLocations = await _plantService.GetGrowingLocations();
+            return View(plant);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, string name, int plantTypeId, int growingLocationId, int wateringIntervalDays, string description)
+        {
+            var plant = await _plantService.GetById(id);
+            if (plant == null)
+            {
+                return NotFound();
+            }
+
+            var plantTypes = await _plantService.GetPlantTypes();
+            var locations = await _plantService.GetGrowingLocations();
+            var plantType = plantTypes.FirstOrDefault(t => t.PlantTypeId == plantTypeId);
+            var location = locations.FirstOrDefault(l => l.GrowingLocationId == growingLocationId);
+
+            if (!string.IsNullOrWhiteSpace(name) && name.Length <= 100 &&
+                !string.IsNullOrWhiteSpace(description) && description.Length <= 2000 &&
+                wateringIntervalDays > 0 && plantType != null && location != null)
+            {
+                await _plantService.Edit(plant, name, plantTypeId, growingLocationId, wateringIntervalDays, description);
+                return RedirectToAction(nameof(Index));
+            }
+
+            ViewBag.Error = "Enter a name (up to 100 characters), a description (up to 2000 characters), an existing type and location, and a positive watering interval.";
+            ViewBag.PlantTypes = plantTypes;
+            ViewBag.GrowingLocations = locations;
+            return View(new Plant
+            {
+                PlantId = id,
+                Name = name,
+                PlantTypeId = plantTypeId,
+                GrowingLocationId = growingLocationId,
+                WateringIntervalDays = wateringIntervalDays,
+                Description = description
+            });
+        }
     }
 }
