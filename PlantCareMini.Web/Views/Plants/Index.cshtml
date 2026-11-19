@@ -2,6 +2,20 @@
 @{ ViewData["Title"] = "Plants"; }
 <h1>Plant catalog</h1>
 <p><a asp-action="Create">Add plant</a></p>
+<form asp-action="Index" method="get">
+    <label for="search">Name</label>
+    <input id="search" name="search" value="@ViewBag.Search" />
+    <label for="growingLocationId">Growing location</label>
+    <select id="growingLocationId" name="growingLocationId">
+        <option value="">All locations</option>
+        @foreach (GrowingLocation location in ViewBag.GrowingLocations)
+        {
+            <option value="@location.GrowingLocationId" selected="@(ViewBag.GrowingLocationId == location.GrowingLocationId)">@location.Name</option>
+        }
+    </select>
+    <button type="submit">Search</button>
+    <a asp-action="Index">Clear</a>
+</form>
 @if (!Model.Any())
 {
     <p>No plants found.</p>

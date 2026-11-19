@@ -13,9 +13,12 @@ namespace PlantCareMini.Web.Controllers
             _plantService = plantService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? search, int? growingLocationId)
         {
-            var plants = await _plantService.GetAll();
+            var plants = await _plantService.GetAll(search, growingLocationId);
+            ViewBag.Search = search;
+            ViewBag.GrowingLocationId = growingLocationId;
+            ViewBag.GrowingLocations = await _plantService.GetGrowingLocations();
             return View(plants);
         }
 

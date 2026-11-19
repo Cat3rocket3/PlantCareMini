@@ -14,9 +14,16 @@ namespace PlantCareMini.Services
             _db = context;
         }
 
-        public Task<List<Plant>> GetAll()
+        public async Task<List<Plant>> GetAll(string? search = null, int? growingLocationId = null)
         {
-            return _db.Plants.Include(p => p.PlantType)
+            var plants = _db.Plants.Where(p => !growingLocationId.HasValue || p.GrowingLocationId == growingLocationId);
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                plants = plants.Where(p => p.Name.Contains(search.Trim()));
+            }
+
+            return await plants.Include(p => p.PlantType)
                 .Include(p => p.GrowingLocation).OrderBy(p => p.Name).ToListAsync();
         }
 
