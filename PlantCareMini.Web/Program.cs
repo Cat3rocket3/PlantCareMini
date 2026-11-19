@@ -20,6 +20,12 @@ namespace PlantCareMini.Web
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+            else
+            {
+                using var scope = app.Services.CreateScope();
+                var db = scope.ServiceProvider.GetRequiredService<PlantCareDbContext>();
+                DemoData.Seed(db);
+            }
 
             app.UseStaticFiles();
             app.UseRouting();
