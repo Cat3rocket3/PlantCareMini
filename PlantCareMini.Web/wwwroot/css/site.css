@@ -29,3 +29,57 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+/* Plant catalog */
+.plant-section {
+  margin: 24px 0;
+  padding: 28px;
+  border: 1px solid #dce6df;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(28, 65, 42, 0.05);
+}
+
+.plant-section h1 { margin-bottom: 20px; color: #244b35; }
+.plant-section .btn { border-radius: 8px; }
+.plant-section .btn-primary { background: #35764e; border-color: #35764e; }
+.plant-section .btn-primary:hover { background: #285c3c; border-color: #285c3c; }
+.plant-section .btn-primary:focus-visible { box-shadow: 0 0 0 3px #b8d9c3; }
+.plant-section .form-control, .plant-section .form-select {
+  border-color: #ccd9cf;
+  border-radius: 8px;
+}
+.plant-section .form-control:focus, .plant-section .form-select:focus {
+  border-color: #508663;
+  box-shadow: 0 0 0 3px rgba(53, 118, 78, 0.15);
+}
+.plant-section label { margin-bottom: 6px; font-weight: 600; }
+.plant-section form[method="post"] { max-width: 620px; }
+.plant-section .filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  padding: 16px;
+  margin: 20px 0;
+  background: #f5f8f5;
+  border: 1px solid #e0e8e1;
+  border-radius: 10px;
+}
+.plant-section .filter-field { flex: 1 1 180px; }
+.plant-section .filter-field label { display: block; }
+.plant-section .table-scroll { overflow-x: auto; border: 1px solid #e0e8e1; border-radius: 10px; }
+.plant-section .table { margin-bottom: 0; vertical-align: middle; }
+.plant-section .table th { padding: 14px; background: #edf3ee; color: #36533f; }
+.plant-section .table td { padding: 14px; }
+.plant-section .plant-actions { white-space: nowrap; }
+.plant-section .plant-actions .btn { margin: 2px; }
+.plant-section dl { max-width: 620px; padding: 18px; background: #f5f8f5; border: 1px solid #e0e8e1; border-radius: 10px; }
+.plant-section dt { color: #36533f; }
+.plant-section dd { margin: 4px 0 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.plant-section dd:last-child { margin-bottom: 0; }
+
+@media (max-width: 575px) {
+  .plant-section { padding: 16px; margin: 16px 0; }
+  .plant-section .filters { padding: 12px; }
+  .plant-section .filter-field { flex-basis: 100%; }
+}

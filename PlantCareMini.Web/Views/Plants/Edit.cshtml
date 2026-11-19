@@ -1,5 +1,6 @@
 @model Plant
 @{ ViewData["Title"] = "Edit plant"; }
+<section class="plant-section">
 <h1>Edit plant</h1>
 <form asp-action="Edit" asp-route-id="@Model.PlantId" asp-antiforgery="false" method="post">
     @if (ViewBag.Error != null)
@@ -39,6 +40,7 @@
         <textarea class="form-control" id="Description" name="description" maxlength="2000" rows="4" required>@Model.Description</textarea>
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
-    <a asp-action="Index">Cancel</a>
+    <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
 </form>
 
+</section>

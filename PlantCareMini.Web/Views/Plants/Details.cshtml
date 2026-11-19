@@ -1,5 +1,6 @@
 @model Plant
 @{ ViewData["Title"] = "Plant details"; }
+<section class="plant-section">
 <h1>Plant details</h1>
 <dl>
     <dt>Name</dt><dd>@Model.Name</dd>
@@ -8,6 +9,7 @@
     <dt>Watering interval (days)</dt><dd>@Model.WateringIntervalDays</dd>
     <dt>Description</dt><dd>@Model.Description</dd>
 </dl>
-<a asp-action="Edit" asp-route-id="@Model.PlantId">Edit</a>
-<a asp-action="Index">Back to list</a>
+<a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.PlantId">Edit</a>
+<a class="btn btn-outline-secondary" asp-action="Index">Back to list</a>
 
+</section>
