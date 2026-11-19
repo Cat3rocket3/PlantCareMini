@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="PlantCareMini.Web/PlantCareMini.Web.csproj" />
   <Project Path="PlantCareMini.Data/PlantCareMini.Data.csproj" />
+  <Project Path="PlantCareMini.Services/PlantCareMini.Services.csproj" />
 </Solution>

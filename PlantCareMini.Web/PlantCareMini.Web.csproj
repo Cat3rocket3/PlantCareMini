@@ -7,6 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../PlantCareMini.Data/PlantCareMini.Data.csproj" />
+    <ProjectReference Include="../PlantCareMini.Services/PlantCareMini.Services.csproj" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.31" PrivateAssets="all" />
   </ItemGroup>
 </Project>

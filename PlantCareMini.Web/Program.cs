@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PlantCareMini.Data;
+using PlantCareMini.Services;
+using PlantCareMini.Services.Contracts;
 
 namespace PlantCareMini.Web
 {
@@ -12,6 +14,7 @@ namespace PlantCareMini.Web
             builder.Services.AddDbContext<PlantCareDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IPlantService, PlantService>();
 
             var app = builder.Build();
 
