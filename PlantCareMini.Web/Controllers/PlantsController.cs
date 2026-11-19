@@ -115,5 +115,27 @@ namespace PlantCareMini.Web.Controllers
                 Description = description
             });
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var plant = await _plantService.GetById(id);
+            if (plant == null)
+            {
+                return NotFound();
+            }
+            return View(plant);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var plant = await _plantService.GetById(id);
+            if (plant == null)
+            {
+                return NotFound();
+            }
+            await _plantService.Delete(plant);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -67,5 +67,11 @@ namespace PlantCareMini.Services
             plant.Description = description;
             await _db.SaveChangesAsync();
         }
+
+        public async Task Delete(Plant plant)
+        {
+            _db.Plants.Remove(plant);
+            await _db.SaveChangesAsync();
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace PlantCareMini.Services.Contracts
         Task<List<GrowingLocation>> GetGrowingLocations();
         Task Create(string name, int plantTypeId, int growingLocationId, int wateringIntervalDays, string description);
         Task Edit(Plant plant, string name, int plantTypeId, int growingLocationId, int wateringIntervalDays, string description);
+        Task Delete(Plant plant);
     }
 }

@@ -29,7 +29,7 @@ else
         {
             <tr>
                 <td>@plant.Name</td><td>@plant.PlantType.Name</td><td>@plant.GrowingLocation.Name</td><td>@plant.WateringIntervalDays</td>
-                <td><a asp-action="Details" asp-route-id="@plant.PlantId">Details</a> | <a asp-action="Edit" asp-route-id="@plant.PlantId">Edit</a></td>
+                <td><a asp-action="Details" asp-route-id="@plant.PlantId">Details</a> | <a asp-action="Edit" asp-route-id="@plant.PlantId">Edit</a> | <a asp-action="Delete" asp-route-id="@plant.PlantId">Delete</a></td>
             </tr>
         }
         </tbody>

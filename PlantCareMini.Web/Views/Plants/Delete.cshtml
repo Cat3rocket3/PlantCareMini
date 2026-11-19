@@ -1,0 +1,16 @@
+@model Plant
+@{ ViewData["Title"] = "Delete plant"; }
+<h1>Delete plant</h1>
+<p>Are you sure you want to delete this plant?</p>
+<dl>
+    <dt>Name</dt><dd>@Model.Name</dd>
+    <dt>Type</dt><dd>@Model.PlantType.Name</dd>
+    <dt>Growing location</dt><dd>@Model.GrowingLocation.Name</dd>
+    <dt>Watering interval (days)</dt><dd>@Model.WateringIntervalDays</dd>
+    <dt>Description</dt><dd>@Model.Description</dd>
+</dl>
+<form asp-action="DeleteConfirmed" asp-route-id="@Model.PlantId" asp-antiforgery="false" method="post">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index">Cancel</a>
+</form>
+
