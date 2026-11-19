@@ -1,0 +1,22 @@
+@model IEnumerable<Plant>
+@{ ViewData["Title"] = "Plants"; }
+<h1>Plant catalog</h1>
+@if (!Model.Any())
+{
+    <p>No plants found.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead><tr><th>Name</th><th>Type</th><th>Location</th><th>Watering (days)</th></tr></thead>
+        <tbody>
+        @foreach (var plant in Model)
+        {
+            <tr>
+                <td>@plant.Name</td><td>@plant.PlantType.Name</td><td>@plant.GrowingLocation.Name</td><td>@plant.WateringIntervalDays</td>
+                
+            </tr>
+        }
+        </tbody>
+    </table>
+}
