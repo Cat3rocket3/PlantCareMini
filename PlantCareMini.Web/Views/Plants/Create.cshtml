@@ -1,0 +1,44 @@
+@model Plant
+@{ ViewData["Title"] = "Add plant"; }
+<h1>Add plant</h1>
+<form asp-action="Create" asp-antiforgery="false" method="post">
+    @if (ViewBag.Error != null)
+    {
+        <p class="text-danger">@ViewBag.Error</p>
+    }
+    <div class="form-group mb-3">
+        <label for="Name">Name</label>
+        <input class="form-control" id="Name" name="name" value="@Model.Name" required maxlength="100" />
+    </div>
+    <div class="form-group mb-3">
+        <label for="PlantTypeId">Type</label>
+        <select class="form-control" id="PlantTypeId" name="plantTypeId" required>
+            <option value="">Select a plant type</option>
+            @foreach (PlantType type in ViewBag.PlantTypes)
+            {
+                <option value="@type.PlantTypeId" selected="@(Model.PlantTypeId == type.PlantTypeId)">@type.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group mb-3">
+        <label for="GrowingLocationId">Growing location</label>
+        <select class="form-control" id="GrowingLocationId" name="growingLocationId" required>
+            <option value="">Select a location</option>
+            @foreach (GrowingLocation location in ViewBag.GrowingLocations)
+            {
+                <option value="@location.GrowingLocationId" selected="@(Model.GrowingLocationId == location.GrowingLocationId)">@location.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group mb-3">
+        <label for="WateringIntervalDays">Watering interval (days)</label>
+        <input class="form-control" type="number" id="WateringIntervalDays" name="wateringIntervalDays" value="@Model.WateringIntervalDays" min="1" required />
+    </div>
+    <div class="form-group mb-3">
+        <label for="Description">Description</label>
+        <textarea class="form-control" id="Description" name="description" maxlength="2000" rows="4" required>@Model.Description</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index">Cancel</a>
+</form>
+

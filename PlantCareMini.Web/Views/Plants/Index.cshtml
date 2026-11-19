@@ -1,6 +1,7 @@
 @model IEnumerable<Plant>
 @{ ViewData["Title"] = "Plants"; }
 <h1>Plant catalog</h1>
+<p><a asp-action="Create">Add plant</a></p>
 @if (!Model.Any())
 {
     <p>No plants found.</p>

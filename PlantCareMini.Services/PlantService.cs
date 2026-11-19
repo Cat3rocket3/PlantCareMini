@@ -29,5 +29,20 @@ namespace PlantCareMini.Services
         {
             return _db.GrowingLocations.ToListAsync();
         }
+
+        public async Task Create(string name, int plantTypeId, int growingLocationId, int wateringIntervalDays, string description)
+        {
+            var plant = new Plant
+            {
+                Name = name,
+                PlantTypeId = plantTypeId,
+                GrowingLocationId = growingLocationId,
+                WateringIntervalDays = wateringIntervalDays,
+                Description = description
+            };
+
+            _db.Plants.Add(plant);
+            await _db.SaveChangesAsync();
+        }
     }
 }
