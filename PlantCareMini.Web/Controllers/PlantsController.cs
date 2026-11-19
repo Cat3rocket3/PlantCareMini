@@ -22,6 +22,16 @@ namespace PlantCareMini.Web.Controllers
             return View(plants);
         }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            var plant = await _plantService.GetById(id);
+            if (plant == null)
+            {
+                return NotFound();
+            }
+            return View(plant);
+        }
+
         public async Task<IActionResult> Create()
         {
             ViewBag.PlantTypes = await _plantService.GetPlantTypes();

@@ -23,13 +23,13 @@
 else
 {
     <table class="table table-striped">
-        <thead><tr><th>Name</th><th>Type</th><th>Location</th><th>Watering (days)</th></tr></thead>
+        <thead><tr><th>Name</th><th>Type</th><th>Location</th><th>Watering (days)</th><th>Actions</th></tr></thead>
         <tbody>
         @foreach (var plant in Model)
         {
             <tr>
                 <td>@plant.Name</td><td>@plant.PlantType.Name</td><td>@plant.GrowingLocation.Name</td><td>@plant.WateringIntervalDays</td>
-                
+                <td><a asp-action="Details" asp-route-id="@plant.PlantId">Details</a></td>
             </tr>
         }
         </tbody>

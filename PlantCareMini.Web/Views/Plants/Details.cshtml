@@ -1,0 +1,12 @@
+@model Plant
+@{ ViewData["Title"] = "Plant details"; }
+<h1>Plant details</h1>
+<dl>
+    <dt>Name</dt><dd>@Model.Name</dd>
+    <dt>Type</dt><dd>@Model.PlantType.Name</dd>
+    <dt>Growing location</dt><dd>@Model.GrowingLocation.Name</dd>
+    <dt>Watering interval (days)</dt><dd>@Model.WateringIntervalDays</dd>
+    <dt>Description</dt><dd>@Model.Description</dd>
+</dl>
+<a asp-action="Index">Back to list</a>
+

@@ -27,6 +27,12 @@ namespace PlantCareMini.Services
                 .Include(p => p.GrowingLocation).OrderBy(p => p.Name).ToListAsync();
         }
 
+        public Task<Plant?> GetById(int id)
+        {
+            return _db.Plants.Include(p => p.PlantType)
+                .Include(p => p.GrowingLocation).FirstOrDefaultAsync(p => p.PlantId == id);
+        }
+
         public Task<List<PlantType>> GetPlantTypes()
         {
             return _db.PlantTypes.ToListAsync();
