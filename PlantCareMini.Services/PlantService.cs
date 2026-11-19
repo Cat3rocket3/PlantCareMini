@@ -19,5 +19,15 @@ namespace PlantCareMini.Services
             return _db.Plants.Include(p => p.PlantType)
                 .Include(p => p.GrowingLocation).OrderBy(p => p.Name).ToListAsync();
         }
+
+        public Task<List<PlantType>> GetPlantTypes()
+        {
+            return _db.PlantTypes.ToListAsync();
+        }
+
+        public Task<List<GrowingLocation>> GetGrowingLocations()
+        {
+            return _db.GrowingLocations.ToListAsync();
+        }
     }
 }
